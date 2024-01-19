@@ -3,16 +3,15 @@ from typing import List
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        def can_pass(benefit, cost, i):
-            result = 0
-            benefit[i] += cost[i]
-            for _i in range(i, len(benefit)):
-                result += benefit[_i]
-                if result < 0:
+        def can_pass(gas, cost, i):
+            result = gas[i]
+            for _i in range(i + 1, len(gas)):
+                result = result - cost[_i - 1] + gas[_i]
+                if result <= 0:
                     return False
-            for _i in range(i):
-                result += benefit[_i]
-                if result < 0:
+            for _i in range(i + 1):
+                result = result - cost[_i - 1] + gas[_i]
+                if result <= 0:
                     return False
             return True
 
