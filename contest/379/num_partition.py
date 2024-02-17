@@ -12,3 +12,4 @@ class Solution:
                     else:
                         count_diff[s[f_i]] = 1
                 f_i += 1
+            return num_partion
