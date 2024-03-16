@@ -8,30 +8,34 @@ class Solution:
         right_heap = []
         heapq.heapify(left_heap)
         heapq.heapify(right_heap)
-        for cost_left in costs[:candidates]:
-            heapq.heappush(left_heap, cost_left)
-        for cost_right in costs[-candidates:]:
-            heapq.heappush(right_heap, cost_right)
+        for i in range(k):
+            if len(costs)>1:
+                heapq.heappush(left_heap,costs[0])
+                heapq.heappush(right_heap,costs[-1])
+                del costs[0]
+                del costs[-1]
+            elif costs:
+                heapq.heappush(left_heap,costs[0])
+                del costs[0]
         total_cost = 0
-        len_cost = len(costs)
-        left_ind = candidates - 1
-        right_ind = len_cost - candidates
-        for i in range(1, k + 1):
-            if len_cost - i < candidates:
-                total_cost = total_cost + heapq.heappop(left_heap)
-                continue
-            min_left = heapq.heappop(left_heap)
-            min_right = heapq.heappop(right_heap)
-            if min_left <= min_right:
-                total_cost = total_cost + min_left
-                left_ind = left_ind + 1
-                heapq.heappush(left_heap, costs[left_ind])
-                heapq.heappush(right_heap, min_right)
+        for i in range(k):
+            left_val,right_val = math.inf,math.inf
+            if left_heap:
+                left_val = heapq.heappop(left_heap)
+            if right_heap:
+                right_val = heapq.heappop(right_heap)
+            if right_val > left_val:
+                heapq.heappush(right_heap,right_val)
+                if costs:
+                    heapq.heappush(left_heap,costs[-1])
+                    del costs[-1]
+                total_cost+=left_val
             else:
-                total_cost = total_cost + min_right
-                right_ind = right_ind - 1
-                heapq.heappush(right_heap, costs[right_ind])
-                heapq.heappush(left_heap, min_left)
+                heapq.heappush(right_heap,left_val)
+                if costs:
+                    heapq.heappush(left_heap,costs[0])
+                    del costs[0]
+                total_cost+=right_val
         return total_cost
 
 
