@@ -1,9 +1,13 @@
 # Definition for singly-linked list.
 from typing import Optional
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         temp_result = []
@@ -11,7 +15,7 @@ class Solution:
         curr_val = curr_node.val
         temp_result.append(curr_val)
         duplicate_elem = []
-        while(curr_node.next):
+        while curr_node.next:
             next_val = curr_node.next.val
             curr_node = curr_node.next
             if curr_val == next_val:
@@ -25,22 +29,23 @@ class Solution:
             return ListNode()
         for val in temp_result:
             temp_list_node.append(ListNode(val))
-        for i in range(1,len(temp_list_node)):
-            temp_list_node[i-1].next = temp_list_node[i]
+        for i in range(1, len(temp_list_node)):
+            temp_list_node[i - 1].next = temp_list_node[i]
         return temp_list_node[0]
+
 
 ### Create the List node
 node = ListNode(1)
-list_val = [1,1]
+list_val = [1, 1]
 temp_list_node = []
 for val in list_val:
     temp_list_node.append(ListNode(val))
-for i in range(1,len(temp_list_node)):
-    temp_list_node[i-1].next = temp_list_node[i]
+for i in range(1, len(temp_list_node)):
+    temp_list_node[i - 1].next = temp_list_node[i]
 curr = temp_list_node[0]
 test = Solution().deleteDuplicates(curr)
-while(True):
+while True:
     print(test.val)
     test = test.next
     if test == None:
-        break   
+        break

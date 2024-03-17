@@ -1,5 +1,6 @@
 import collections
 
+
 ### Using stack to pop the element with the score, keep pop ulti you hit higher number
 ### otherwise, you will almost always return 1
 class StockSpanner:

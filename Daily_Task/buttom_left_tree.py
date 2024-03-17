@@ -1,11 +1,15 @@
 # Definition for a binary tree node.
 from typing import Optional
 from collections import deque
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
         q = deque([root])
@@ -26,5 +30,3 @@ class Solution:
                 next_q = deque()
                 assing = False
         return most_left
-
-        

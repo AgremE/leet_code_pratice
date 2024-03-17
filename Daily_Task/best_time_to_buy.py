@@ -36,7 +36,7 @@ class Solution:
             return max_score, max_tracker
 
         _temp_max_score, max_tracker = recur_sol(score, 0, 0, max_tracker=max_tracker)
-        return max(max(max_tracker),0)
+        return max(max(max_tracker), 0)
 
 
 solution = Solution()

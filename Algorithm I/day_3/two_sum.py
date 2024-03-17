@@ -10,8 +10,9 @@ class Solution:
             elif target > numbers[l_ind] + numbers[r_ind]:
                 l_ind = l_ind + 1
             else:
-                return [l_ind+1,r_ind+1]
+                return [l_ind + 1, r_ind + 1]
         return result
 
+
 test_solution = Solution()
-print(test_solution.twoSum([2,7,11,15],9))
+print(test_solution.twoSum([2, 7, 11, 15], 9))

@@ -36,7 +36,7 @@ class Solution:
         start_v = {(startRow, startColumn): 1}
         n_v = []
         result = 0
-        MOD = 10**9+7
+        MOD = 10**9 + 7
         for i in range(maxMove):
             vertex_count = {}
             for _pair, _count in start_v.items():
@@ -50,7 +50,7 @@ class Solution:
                         vertex_count[(_p[0], _p[1])] += _count
             start_v = vertex_count
 
-        return result%MOD
+        return result % MOD
 
 
 solution = Solution()

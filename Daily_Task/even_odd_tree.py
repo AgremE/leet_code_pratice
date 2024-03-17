@@ -5,6 +5,8 @@
 #         self.left = left
 #         self.right = right
 from collections import deque
+
+
 class Solution(object):
     def isEvenOddTree(self, root):
         """
@@ -23,15 +25,15 @@ class Solution(object):
                 temp_n_v.append(_n.right)
             lvl_value.append(_n.val)
             if not n_v:
-                if lvl%2==1:
-                    for i in range(1,len(lvl_value)):
-                        if lvl_value[i-1] - lvl_value[i] > 0:
+                if lvl % 2 == 1:
+                    for i in range(1, len(lvl_value)):
+                        if lvl_value[i - 1] - lvl_value[i] > 0:
                             return False
                 else:
-                    for i in range(1,len(lvl_value)):
-                        if lvl_value[i] - lvl_value[i-1] < 0:
+                    for i in range(1, len(lvl_value)):
+                        if lvl_value[i] - lvl_value[i - 1] < 0:
                             return False
-                lvl+=1
+                lvl += 1
                 n_v = temp_n_v
                 temp_n_v = deque([])
                 lvl_value = []

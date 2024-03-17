@@ -10,6 +10,7 @@ Return the starting indices of all the concatenated substrings in s. You can ret
 
 """
 
+
 class Solution(object):
     def findSubstring(self, s, words):
         """
@@ -23,7 +24,8 @@ class Solution(object):
                 start_w[word[0]].append(word)
             else:
                 start_w[word[0]] = [word]
-        def is_start_indice(s,start_w):
+
+        def is_start_indice(s, start_w):
             ls_ws = start_w[s[0]]
             for w in ls_ws:
                 pass

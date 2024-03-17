@@ -1,11 +1,13 @@
 from typing import List
+
+
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        result = [[i] for i in range(1,n+1)]
-        for _k in range(1,k+1):
+        result = [[i] for i in range(1, n + 1)]
+        for _k in range(1, k + 1):
             tracker = {}
             temp_result = []
-            for _n in range(2,n+1):
+            for _n in range(2, n + 1):
                 for i in range(len(result)):
                     _list_n = result[i]
                     if i in _list_n:

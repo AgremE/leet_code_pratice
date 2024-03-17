@@ -14,10 +14,10 @@ class Solution(object):
         is_even_node = True
         while head:
             if head.val > head.next.val:
-                even_win+=1
+                even_win += 1
                 head = head.next.next
             else:
-                odd_win+=1
+                odd_win += 1
                 head = head.next.next
         if odd_win > even_win:
             return "Odd"
@@ -25,5 +25,3 @@ class Solution(object):
             return "Even"
         else:
             return "Tie"
-            
-        

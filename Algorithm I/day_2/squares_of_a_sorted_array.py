@@ -22,10 +22,11 @@ class Solution:
                 return result
             elif pos_elem[f_idx] <= neg_elem[s_idx]:
                 result.append(pos_elem[f_idx])
-                f_idx = f_idx+1
-            elif pos_elem[f_idx]>neg_elem[s_idx]:
+                f_idx = f_idx + 1
+            elif pos_elem[f_idx] > neg_elem[s_idx]:
                 result.append(neg_elem[s_idx])
-                s_idx = s_idx+1
+                s_idx = s_idx + 1
+
 
 test_solution = Solution()
-print(test_solution.sortedSquares([-4,-1,0,3,10]))
+print(test_solution.sortedSquares([-4, -1, 0, 3, 10]))
