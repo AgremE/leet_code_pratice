@@ -17,4 +17,24 @@ class ListNode:
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        # this should be linear algorithm
+        # traverse through the list and count total node
+        # travese through the list against with total node//2
+        # make that last node point the the grand child node
+        temp_head = head
+        count = 0
+        while temp_head:
+            count += 1
+            temp_head = temp_head.next
+        if count == 1:
+            return None
+        del_node = count // 2
+        temp_head = head
+        for i in range(del_node - 1):
+            temp_head = temp_head.next
+        if temp_head.next:
+            if temp_head.next.next:
+                temp_head.next = temp_head.next.next
+            else:
+                temp_head.next = None
+        return head
