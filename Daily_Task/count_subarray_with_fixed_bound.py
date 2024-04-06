@@ -4,36 +4,19 @@ import math
 
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
-        s_i, f_i = 0, 0
-        min_ind = []
-        max_ind = []
+        max_i, min_i = math.inf, math.inf
+        most_v_i = 0
         result = 0
-        while f_i < len(nums):
-            if nums[f_i] == minK:
-                min_ind.append(f_i)
-                if max_ind or (f_i == len(nums) - 1):
-                    for _i, ind in enumerate(max_ind):
-                        if _i == 0:
-                            result += ind - s_i
-                        else:
-                            result += max_ind[ind] - max_ind[ind - 1]
-                f_i += 1
-            elif nums[f_i] == maxK:
-                max_ind.append(f_i)
-                if min_ind or (f_i == len(nums) - 1):
-                    for _i, ind in enumerate(min_ind):
-                        if _i == 0:
-                            result += ind - s_i
-                        else:
-                            result += min_ind[ind] - min_ind[ind - 1]
-                f_i += 1
-            elif nums[f_i] < minK or nums[f_i] > maxK:
-                f_i += 1
-                s_i = f_i
-                min_ind = []
-                max_ind = []
-            else:
-                f_i += 1
+        for i, num in enumerate(nums):
+            if num == minK:
+                min_i = i
+            elif num == maxK:
+                max_i = i
+            elif (num < minK) and (num > maxK):
+                most_v_i = i
+            if max_i == math.inf or min_i == math.inf:
+                continue
+            result += max(0, i - ((min(min_i, max_i) - most_v_i)))
         return result
 
 
