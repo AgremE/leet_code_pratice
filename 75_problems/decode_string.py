@@ -7,14 +7,14 @@ class Solution:
         result = []
         i = 0
         s = s[::-1]
-        while i<=len(s)-1:
+        while i <= len(s) - 1:
             if s[i] == "[":
                 # try to pop most of the number
-                i+=1
+                i += 1
                 while s[i].isnumeric():
                     num_stack.append(s[i])
-                    i+=1
-                    if i==len(s):
+                    i += 1
+                    if i == len(s):
                         break
                 _mul = int("".join(num_stack[::-1]))
                 num_stack = []
@@ -23,12 +23,12 @@ class Solution:
                     temp_str = string_stack.pop(-1)
                     if temp_str == "]":
                         break
-                    cur_string+=temp_str
-                cur_string=_mul*cur_string
+                    cur_string += temp_str
+                cur_string = _mul * cur_string
                 string_stack.append(cur_string)
             else:
                 string_stack.append(s[i])
-                i+=1
+                i += 1
         return "".join(string_stack[::-1])
 
 
