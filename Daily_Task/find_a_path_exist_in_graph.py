@@ -1,8 +1,12 @@
 from typing import List
+
+
 class Solution:
-    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    def validPath(
+        self, n: int, edges: List[List[int]], source: int, destination: int
+    ) -> bool:
         graph = {}
-        for v1,v2 in edges:
+        for v1, v2 in edges:
             if v1 in graph:
                 graph[v1].append(v2)
             else:
@@ -24,5 +28,5 @@ class Solution:
                 return True
             if not n_v:
                 n_v = temp_n_v
-                temp_n_v=[]
+                temp_n_v = []
         return False
